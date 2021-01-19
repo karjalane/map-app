@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { React, useState, useEffect, useCallback } from 'react'
+import axios from 'axios'
+import MapContainer from './components/MapContainer'
+import LocationTable from './components/LocationTable'
 
-function App() {
+const locationsAPI = 'https://fakerapi.it/api/v1/addresses'
+
+const App = () => {
+  const [locations, setLocations] = useState([])
+
+  const loadLocations = useCallback(() => {
+    axios.get(`${locationsAPI}`)
+      .then((res) => {
+        setLocations(res.data)
+      })
+  }, [])
+
+  useEffect(() => {
+    loadLocations()
+  }, [loadLocations])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MapContainer locations={ locations.data } />
+      <LocationTable data={ locations.data } />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
