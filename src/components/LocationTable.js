@@ -65,7 +65,7 @@ const GlobalFilter = ({
 
   return (
     <span>
-      Search:{ ' ' }
+      Search from the list only...
       <InputBase 
         className='form-control'
         value={ value || '' }
@@ -73,7 +73,6 @@ const GlobalFilter = ({
           setValue(e.target.value)
           onChange(e.target.value)
         } }
-        placeholder={`${ count } locations...`}
       />
     </span>
   )

@@ -1,7 +1,6 @@
 import { React, useState, useEffect, useCallback } from 'react'
 import axios from 'axios'
 import MapContainer from './components/MapContainer'
-import LocationTable from './components/LocationTable'
 
 const locationsAPI = 'https://fakerapi.it/api/v1/addresses'
 
@@ -22,7 +21,7 @@ const App = () => {
   return (
     <div className="App">
       <MapContainer locations={ locations.data } />
-      <LocationTable data={ locations.data } />
+      
     </div>
   )
 }

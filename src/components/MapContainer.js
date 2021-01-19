@@ -1,4 +1,5 @@
 import { React, useState } from 'react'
+import LocationTable from './LocationTable'
 import { GoogleMap, LoadScript, Marker, InfoBox } from '@react-google-maps/api'
 import { v4 as uuid_v4 } from 'uuid'
 import Fuse from 'fuse.js'
@@ -178,6 +179,7 @@ const MapContainer = ({ locations = [] }) => {
           </GoogleMap>
         </LoadScript>
       </div>
+      <LocationTable data={ markers } />
     </div>
   )
 }
